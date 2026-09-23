@@ -1,0 +1,1624 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Alejandro Roig, Aitor Ventura y Ángel Vidal">
+      
+      
+      
+        <link rel="prev" href="../primer-contacto-aws/">
+      
+      
+        <link rel="next" href="../../tema2/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Actividad 1.1 - Tu primer despliegue en la nube - Introducción a la Nube Pública</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#actividad-11-tu-primer-despliegue-en-la-nube" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Introducción a la Nube Pública" class="md-header__button md-logo" aria-label="Introducción a la Nube Pública" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Introducción a la Nube Pública
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Actividad 1.1 - Tu primer despliegue en la nube
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Modo Claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo Claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Introducción a la Nube Pública" class="md-nav__button md-logo" aria-label="Introducción a la Nube Pública" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Introducción a la Nube Pública
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 1 - Introducción a la nube pública
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 1 - Introducción a la nube pública
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 1 - Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primer contacto profesional con AWS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Primer contacto profesional con AWS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primer-contacto-aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primer contacto profesional con AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividad 1.1 - Tu primer despliegue en la nube
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividad 1.1 - Tu primer despliegue en la nube
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contexto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-vas-a-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué vas a practicar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requisitos previos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-a-publicar-el-front-de-el-manillar-guiada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte A — Publicar el front de El Manillar (guiada)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte A — Publicar el front de El Manillar (guiada)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-entra-en-tu-learner-lab-por-primera-vez" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1 — Entra en tu Learner Lab por primera vez
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-comprueba-tu-identidad-y-compara-consola-y-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2 — Comprueba tu identidad y compara consola y CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-crea-y-configura-el-bucket-desde-la-consola" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3 — Crea y configura el bucket desde la consola
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-sube-el-contenido-por-cli-y-verifica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4 — Sube el contenido por CLI y verifica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-localiza-donde-se-controla-el-gasto-de-tu-laboratorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5 — Localiza dónde se controla el gasto de tu laboratorio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-b-pon-a-prueba-tu-despliegue-reto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte B — Pon a prueba tu despliegue (reto)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Criterios de evaluación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cierre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Cierre
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 2 - Redes virtuales y servicios de cómputo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 2 - Redes virtuales y servicios de cómputo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tema2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 2 - Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diseño de la red virtual
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Diseño de la red virtual
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tema2/vpc-diseno/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diseño de la red virtual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tema2/actividad_2_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividad 2.1 - Tu propia VPC en dos zonas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seguridad de red
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Seguridad de red
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tema2/seguridad-red/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seguridad de red
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tema2/actividad_2_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividad 2.2 - Diagnóstico de fallos de red por capas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Máquinas virtuales
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Máquinas virtuales
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tema2/maquinas-virtuales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Máquinas virtuales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tema2/actividad_2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividad 2.3 - De instancia a plantilla
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Currículo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contexto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-vas-a-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué vas a practicar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requisitos previos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-a-publicar-el-front-de-el-manillar-guiada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte A — Publicar el front de El Manillar (guiada)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte A — Publicar el front de El Manillar (guiada)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-entra-en-tu-learner-lab-por-primera-vez" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1 — Entra en tu Learner Lab por primera vez
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-comprueba-tu-identidad-y-compara-consola-y-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2 — Comprueba tu identidad y compara consola y CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-crea-y-configura-el-bucket-desde-la-consola" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3 — Crea y configura el bucket desde la consola
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-sube-el-contenido-por-cli-y-verifica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4 — Sube el contenido por CLI y verifica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-localiza-donde-se-controla-el-gasto-de-tu-laboratorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5 — Localiza dónde se controla el gasto de tu laboratorio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-b-pon-a-prueba-tu-despliegue-reto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte B — Pon a prueba tu despliegue (reto)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Criterios de evaluación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cierre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Cierre
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div><h1 id="actividad-11-tu-primer-despliegue-en-la-nube">🧪 Actividad 1.1: Tu primer despliegue en la nube<a class="headerlink" href="#actividad-11-tu-primer-despliegue-en-la-nube" title="Permanent link">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Descarga la plantilla</p>
+<p>📄 <a href="../plantillas/Actividad_1_1_INU_Plantilla.docx" rel="noopener" target="_blank">Plantilla 1.1 — Tu primer despliegue en la nube</a></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Descarga los recursos</p>
+<p>📦 <a href="../recursos/actividad_1_1_recursos.zip" rel="noopener" target="_blank">Recursos de la Actividad 1.1</a> — lo vas a subir y descomprimir en el Paso 4 de esta actividad.</p>
+</div>
+<h2 id="contexto">Contexto<a class="headerlink" href="#contexto" title="Permanent link">¶</a></h2>
+<p><strong>El Manillar</strong>, un taller de bicicletas de barrio, necesita antes que cualquier otra cosa un sitio donde vivir en internet. Hoy trabajas con su parte más simple: un front estático (HTML, CSS y JavaScript, con un <code>config.js</code> de una sola línea) que publicas tal cual, sin backend detrás todavía. Tu tarea de hoy es publicarlo en internet, con una dirección propia, usando AWS por primera vez.</p>
+<h2 id="que-vas-a-practicar">Qué vas a practicar<a class="headerlink" href="#que-vas-a-practicar" title="Permanent link">¶</a></h2>
+<ul>
+<li>Acceder por primera vez a tu AWS Academy Learner Lab, desde la invitación del profesor hasta la consola de AWS.</li>
+<li>Comprobar tu identidad en AWS y repetir las mismas operaciones básicas por consola y por CLI.</li>
+<li>Publicar contenido estático en Amazon S3 con acceso público de solo lectura, primero explorando las opciones en consola y luego repitiendo el proceso por CLI.</li>
+<li>Comprobar dónde puedes consultar el gasto real de tu laboratorio.</li>
+<li>Clasificar incidentes reales según el modelo de responsabilidad compartida.</li>
+</ul>
+<h2 id="requisitos-previos">Requisitos previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">¶</a></h2>
+<p>Ninguno específico de INU — es la primera sesión del módulo. Necesitas: la invitación de tu profesor al curso de AWS Academy Learner Lab, recibida por correo antes de la sesión (revísalo con antelación, no el día de clase), y los ficheros estáticos del front de El Manillar (<code>index.html</code>, <code>style.css</code>, <code>script.js</code>, <code>config.js</code>) — descárgalos del enlace de arriba, no los programas tú. Repasa antes la sección "⚙️ Modelo de responsabilidad compartida" de los apuntes de hoy — la vas a necesitar en la Parte B.</p>
+<hr>
+<h2 id="parte-a-publicar-el-front-de-el-manillar-guiada">Parte A — Publicar el front de El Manillar (guiada)<a class="headerlink" href="#parte-a-publicar-el-front-de-el-manillar-guiada" title="Permanent link">¶</a></h2>
+<h3 id="paso-1-entra-en-tu-learner-lab-por-primera-vez">Paso 1 — Entra en tu Learner Lab por primera vez<a class="headerlink" href="#paso-1-entra-en-tu-learner-lab-por-primera-vez" title="Permanent link">¶</a></h3>
+<ol>
+<li>Espera la invitación de tu profesor al curso "AWS Academy Learner Lab" — llega por correo electrónico, con un enlace para unirte. Sin ella no puedes continuar: pídesela con antelación si no te ha llegado.</li>
+<li>Entra en AWS Academy: <a href="https://awsacademy.instructure.com/login/canvas">awsacademy.instructure.com/login/canvas</a>.</li>
+<li>
+<p>Ve a <strong>Asignaturas</strong>, en el menú lateral, y entra en el curso <strong>AWS Academy Learner Lab</strong> que ha creado tu profesor.</p>
+<p><img alt="Listado de asignaturas, con AWS Academy Learner Lab señalado" src="../img/actividad_1_1_paso1_a.png"></p>
+</li>
+<li>
+<p>Dentro del curso, ve a <strong>Contenidos</strong> → busca <strong>Laboratorio para el alumnado de AWS Academy</strong> → <strong>Lanzamiento del Laboratorio para el alumnado de AWS Academy</strong>.</p>
+<p><img alt="Sección de contenidos del curso, con el enlace de lanzamiento del laboratorio señalado" src="../img/actividad_1_1_paso1_b.png"></p>
+</li>
+<li>
+<p>La primera vez que entres tendrás que aceptar los términos que te muestre. Verás una pantalla con un punto junto a "AWS" (arriba a la izquierda) en rojo, y los botones <strong>Start Lab</strong> / <strong>End Lab</strong>.</p>
+<p><img alt="Pantalla de lanzamiento del laboratorio, con el punto AWS en rojo antes de arrancar" src="../img/actividad_1_1_paso1_c.png"></p>
+</li>
+<li>
+<p>Haz clic en <strong>Start Lab</strong>, y espera: el punto pasa de rojo a amarillo mientras se enciende, y a verde cuando el laboratorio ya está listo.</p>
+<p><img alt="Laboratorio arrancando, con Start Lab señalado y el punto AWS en amarillo" src="../img/actividad_1_1_paso1_d.png"></p>
+</li>
+<li>
+<p>Cuando el punto esté en verde, fíjate en dos datos que vas a usar el resto del curso: el contador de crédito consumido (arriba, "Used $X of $50") y el tiempo restante de la sesión (a la derecha, cuenta atrás desde 4 horas). El panel de la izquierda, con un prompt tipo <code>usuario@runweb...:~$</code>, también es una terminal, pero no la vas a usar — dentro de la propia consola de AWS tienes una mejor, que ves en el paso siguiente.</p>
+<p><img alt="Laboratorio ya arrancado, con el contador de crédito, el tiempo restante y la terminal del navegador visibles" src="../img/actividad_1_1_paso1_e.png"></p>
+</li>
+<li>
+<p>Haz clic en el propio enlace <strong>AWS</strong> (junto al punto verde) para entrar en la consola. Vas a ver la página de inicio de la Consola de AWS — desde aquí trabajas el resto de la sesión.</p>
+<p><img alt="Página de inicio de la Consola de AWS, ya dentro del laboratorio" src="../img/actividad_1_1_paso1_f.png"></p>
+</li>
+<li>
+<p>En la barra superior de la consola, busca el icono de terminal (<code>&gt;_</code>) y ábrelo — es <strong>AWS CloudShell</strong>, una terminal que corre en la nube de AWS, con el CLI ya instalado y autenticado con tu sesión. Vas a usar esta terminal para todos los comandos CLI del módulo, sin instalar ni configurar nada en tu ordenador — importante si trabajas desde un PC del instituto donde no puedes instalar programas.</p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Comprueba esto antes de la sesión</p>
+<p>No todos los Learner Lab tienen CloudShell habilitado. Ábrelo con antelación: si el icono no aparece, o da un error de permisos al abrirlo, avisa para resolverlo antes de que el grupo lo necesite.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Si trabajas con tu propio portátil, puedes instalar el CLI en local en vez de usar CloudShell</p>
+<p>Todo este módulo está pensado para funcionar solo con CloudShell, sin instalar nada — pero si tienes tu propio equipo y prefieres una terminal local, puedes instalar el CLI de AWS tú mismo: descarga el instalador desde <a href="https://aws.amazon.com/cli/">aws.amazon.com/cli</a> para tu sistema operativo, instálalo, y después ejecuta <code>aws configure</code> en tu terminal. Te pedirá <code>AWS Access Key ID</code>, <code>AWS Secret Access Key</code> y una región — los dos primeros los sacas del botón <strong>AWS Details</strong> de la pantalla de lanzamiento del Paso 6 (contiene también un <code>aws_session_token</code>, que tendrás que añadir a mano en <code>~/.aws/credentials</code>, porque <code>aws configure</code> no pregunta por él). Ten en cuenta que estas credenciales son temporales y caducan con la sesión del laboratorio, así que tendrías que repetir este proceso cada vez. Si no tienes claro qué opción te conviene, usa CloudShell — es la que sigue el resto de esta guía.</p>
+</div>
+<p><strong>Comprueba</strong>: que el punto junto a "AWS" está en verde, que la página de inicio de la consola carga con normalidad, con tu región y tu usuario (<code>voclabs/user...</code>) visibles arriba a la derecha, y que CloudShell abre una terminal funcional.</p>
+<p><strong>Captura</strong>: la página de inicio de tu propia Consola de AWS, con tu usuario (<code>voclabs/user...</code>) visible arriba a la derecha — es lo que demuestra que has entrado tú, no una captura genérica.</p>
+<div class="admonition tip">
+<p class="admonition-title">El punto junto a 'AWS' es tu indicador de estado durante todo el curso</p>
+<ul>
+<li><strong>Rojo</strong>: laboratorio apagado.</li>
+<li><strong>Amarillo</strong>: arrancando — espera, no hagas nada todavía.</li>
+<li><strong>Verde</strong>: listo para trabajar.</li>
+</ul>
+<p>Vas a repetir este mismo arranque al principio de cada sesión práctica del módulo: el laboratorio no se queda encendido de una clase a otra, así que este Paso 1 lo vas a hacer cada vez, no solo hoy.</p>
+</div>
+<h3 id="paso-2-comprueba-tu-identidad-y-compara-consola-y-cli">Paso 2 — Comprueba tu identidad y compara consola y CLI<a class="headerlink" href="#paso-2-comprueba-tu-identidad-y-compara-consola-y-cli" title="Permanent link">¶</a></h3>
+<p>Antes de crear nada, confirma como quién estás actuando. Hazlo primero por CLI:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity
+</code></pre></div></td></tr></table></div>
+<p>Anota el <code>Account</code> y el <code>Arn</code> que te devuelve.</p>
+<p>Ahora repite el mismo recorrido, pero por consola:</p>
+<ol>
+<li>Entra en la consola web de AWS con las credenciales de tu Learner Lab.</li>
+<li>Arriba a la derecha, haz clic en el menú con tu nombre de usuario/rol.</li>
+<li>Comprueba que el número de cuenta (<em>Account ID</em>) que aparece ahí coincide con el <code>Account</code> que te ha devuelto la CLI.</li>
+</ol>
+<p><img alt="Menú de identidad en la consola, con el número de cuenta visible" src="../img/actividad_1_1_paso2.png"></p>
+<p>Haz lo mismo con una segunda operación — listar qué buckets de S3 existen ya en tu cuenta (probablemente ninguno todavía):</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>ls
+</code></pre></div></td></tr></table></div>
+<p>Y por consola: en el buscador de servicios de la parte superior, escribe "S3" y entra en el servicio. Comprueba que ves la misma lista (vacía) que te ha devuelto la CLI.</p>
+<p><strong>Comprueba</strong>: que el número de cuenta y el resultado del listado de buckets coinciden entre CLI y consola.</p>
+<p><strong>Captura</strong>: tu propio menú de identidad en la consola, con tu número de cuenta visible, y la salida de <code>aws sts get-caller-identity</code> en tu terminal.</p>
+<h3 id="paso-3-crea-y-configura-el-bucket-desde-la-consola">Paso 3 — Crea y configura el bucket desde la consola<a class="headerlink" href="#paso-3-crea-y-configura-el-bucket-desde-la-consola" title="Permanent link">¶</a></h3>
+<p>Esta es la primera vez que tocas S3, así que hazlo desde la consola, paso a paso, sin saltarte ninguna pantalla. Esto es lo que vas a tener montado al terminar el paso:</p>
+<p><img alt="El Manillar — sitio estático publicado en S3" src="../img/diagrama_s3_estatico.png"></p>
+<ol>
+<li>Dentro del servicio S3, haz clic en <strong>Crear bucket</strong>.</li>
+<li>Deja la región que te indique el Learner Lab.</li>
+<li>En <strong>Tipo de bucket</strong>, deja el valor por defecto (<strong>Uso general</strong>) — vas a trabajar S3 en profundidad, incluidas sus distintas variantes, cuando lo veas de nuevo con calma en el Tema 3.</li>
+<li>Ponle un nombre único (los nombres de bucket son globales en todo AWS, no solo en tu cuenta) — por ejemplo <code>el-manillar-front-&lt;tu-identificador&gt;</code>, donde <code>&lt;tu-identificador&gt;</code> es algo tuyo que no se repita, como tu nombre y la inicial de tu apellido (por ejemplo <code>aitor-v</code>). Vas a reutilizar el mismo identificador en el resto de actividades del módulo.</li>
+<li>
+<p>Baja hasta el bloque <strong>Configuración de bloqueo de acceso público a este bucket</strong>. Por defecto viene todo marcado (bloqueado). <strong>Desmarca la casilla superior</strong> ("Bloquear todo el acceso público"): AWS te avisa de que esto puede hacer público el bucket y sus objetos — marca la casilla de confirmación ("Reconozco que la configuración actual puede provocar que este bucket y los objetos que contiene se vuelvan públicos") para aceptarlo.</p>
+<p><img alt="Pantalla de creación del bucket, con el bloqueo de acceso público desmarcado" src="../img/actividad_1_1_paso3_a.png"></p>
+</li>
+<li>
+<p>Haz clic en <strong>Crear bucket</strong>.</p>
+</li>
+<li>Entra en el bucket recién creado → pestaña <strong>Propiedades</strong>.</li>
+<li>Baja hasta <strong>Alojamiento de sitio web estático</strong> → <strong>Editar</strong>.</li>
+<li>Activa <strong>Habilitar</strong>, y en <strong>Documento de índice</strong> escribe <code>index.html</code>.</li>
+<li>
+<p>Guarda los cambios.</p>
+<p><img alt="Configuración de alojamiento de sitio web estático activada" src="../img/actividad_1_1_paso3_b.png"></p>
+</li>
+<li>
+<p>Ve a la pestaña <strong>Permisos</strong> → <strong>Política de bucket</strong> → <strong>Editar</strong>.</p>
+</li>
+<li>
+<p>Desbloquear el acceso público (Paso 5) solo abre la puerta — todavía hace falta decir explícitamente quién puede entrar por ella. Pega esta política, sustituyendo <code>&lt;tu-bucket&gt;</code> por el nombre real de tu bucket (lo tienes arriba del todo de esta misma pantalla, y también en el listado de buckets de S3 — es el nombre que le pusiste en el Paso 4, por ejemplo <code>el-manillar-front-aitor-v</code>), y guarda:</p>
+<div class="language-json highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JSON</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:GetObject"</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::&lt;tu-bucket&gt;/*"</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Esto autoriza la acción <code>s3:GetObject</code> (leer un objeto) a cualquiera (<code>"Principal": "*"</code>), sobre cualquier objeto dentro de tu bucket (el comodín <code>/*</code> al final del <code>Resource</code>) — ni más permiso del necesario (solo lectura, nunca escritura ni borrado) ni menos (sin esta política, aunque hayas desactivado el bloqueo, nadie podría leer nada todavía).</p>
+</li>
+</ol>
+<p><img alt="Política de bucket con lectura pública configurada" src="../img/actividad_1_1_paso3_c.png"></p>
+<p><strong>Comprueba</strong>: que en cada una de las tres pantallas de este paso se ve, sin recortar, algún dato que identifique que es tu propio bucket — no una copia de la imagen de referencia de arriba.</p>
+<p><strong>Captura</strong>: la pantalla de creación con el bloqueo desmarcado, <strong>con el nombre de tu bucket visible en el campo</strong> (no lo recortes); la configuración de alojamiento estático activada, <strong>con el nombre de tu bucket visible en la ruta de navegación superior</strong>; y la política de bucket, <strong>con el <code>Resource</code> mostrando el ARN de tu propio bucket</strong>, no el genérico <code>&lt;tu-bucket&gt;</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Público a propósito, no por descuido</p>
+<p>Acabas de convertir este bucket en accesible por cualquiera en internet. Es correcto — es justo lo que quieres para un front estático—, pero fíjate en que ha sido una decisión explícita tuya (desactivar un bloqueo que estaba activado por defecto, y pegar tú mismo la política), no un permiso heredado ni un olvido. Vuelve a leer el primero de los seis incidentes de los apuntes de hoy: un bucket público por error es, con diferencia, el fallo de configuración más repetido en la nube real.</p>
+</div>
+<p><strong>Documenta tu elección</strong>: el nombre de bucket que has usado es tuyo — no lo copies de un compañero, no va a existir dos veces. Anota qué nombre e identificador has elegido y por qué, para que quien revise la actividad sepa que el despliegue es tuyo y no una copia.</p>
+<h3 id="paso-4-sube-el-contenido-por-cli-y-verifica">Paso 4 — Sube el contenido por CLI y verifica<a class="headerlink" href="#paso-4-sube-el-contenido-por-cli-y-verifica" title="Permanent link">¶</a></h3>
+<p>Ahora que el bucket ya existe y está configurado, sube por CLI el contenido del front que te has descargado — esta parte sí conviene automatizarla, porque la vas a repetir cada vez que cambie algo del front.</p>
+<p>Tu CloudShell del Paso 1 no tiene el zip que te descargaste a tu ordenador — súbelo primero: en CloudShell, <strong>Actions → Upload file</strong>, selecciona <code>actividad_1_1_recursos.zip</code>, y luego descomprímelo:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>unzip<span class="w"> </span>actividad_1_1_recursos.zip
+</code></pre></div></td></tr></table></div>
+<p>Esto recrea exactamente la carpeta <code>recursos/tema1/actividad_1_1/front/</code> dentro de tu CloudShell, con los mismos cuatro ficheros. Ahora sí, sube el contenido al bucket:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>recursos/tema1/actividad_1_1/front/<span class="w"> </span>s3://&lt;tu-bucket&gt;/<span class="w"> </span>--recursive
+</code></pre></div></td></tr></table></div>
+<p>Obtén la URL pública del sitio: en la consola, dentro de tu bucket → pestaña <strong>Propiedades</strong> → baja hasta <strong>Alojamiento de sitio web estático</strong>, donde aparece la URL del <em>endpoint</em>. Ábrela en el navegador, en una ventana de incógnito para comprobar que no depende de tu sesión iniciada.</p>
+<p><img alt="El front de El Manillar cargando desde la URL pública del bucket" src="../img/actividad_1_1_paso4.png"></p>
+<p><strong>Comprueba</strong>: que la URL carga el front de El Manillar sin haber iniciado sesión en AWS. Es normal que el aviso de estado del taller diga "todavía no hay backend conectado" — no hay ningún backend detrás en esta actividad, la página es puramente estática.</p>
+<p><strong>Captura</strong>: tu propio front de El Manillar cargando en el navegador, <strong>sin recortar la barra de direcciones</strong> (para que se vea el nombre de tu bucket en la URL), y la salida del comando <code>aws s3 cp</code> mostrando los ficheros subidos con la ruta <code>s3://&lt;tu-bucket&gt;/</code> completa.</p>
+<h3 id="paso-5-localiza-donde-se-controla-el-gasto-de-tu-laboratorio">Paso 5 — Localiza dónde se controla el gasto de tu laboratorio<a class="headerlink" href="#paso-5-localiza-donde-se-controla-el-gasto-de-tu-laboratorio" title="Permanent link">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Comprueba esto antes de la sesión, no durante</p>
+<p>Muchos Learner Lab <strong>no</strong> dan acceso a la consola nativa de AWS Budgets / Cost Management — el crédito se controla desde el panel del propio Learner Lab (por ejemplo, en Vocareum o AWS Academy), no desde dentro de la cuenta de AWS. Antes de la clase, comprueba cuál es tu caso.</p>
+</div>
+<p>Si tu laboratorio sí da acceso a Budgets:</p>
+<ol>
+<li>Busca "Administración de facturación y costos" en el buscador de servicios.</li>
+<li>En el menú lateral, despliega <strong>Presupuestos y planificación</strong> → <strong>Presupuestos</strong> → <strong>Crear presupuesto</strong> (o, más rápido, usa el atajo <strong>Crear un presupuesto</strong> que aparece directamente en la página de inicio, dentro de "Acciones recomendadas").</li>
+<li>En <strong>Elegir el tipo de presupuesto</strong>, deja <strong>Uso de una plantilla (simplificada)</strong> y elige la plantilla <strong>Presupuesto de costos mensual</strong>.</li>
+<li>Dale un nombre, pon un importe bajo (por ejemplo, 5 $), e indica tu correo como destinatario. Esta plantilla no te deja elegir el umbral de la alerta — ya trae fijas tres notificaciones: al 85 % del gasto real, al 100 % del gasto real, y al 100 % del gasto previsto. Crea el presupuesto.</li>
+</ol>
+<p>Si no te deja (verás un error de permisos al entrar en Budgets), en su lugar entra en el panel de tu Learner Lab (Vocareum o AWS Academy, fuera de la consola de AWS) y localiza dónde muestra el crédito consumido y el restante.</p>
+<p><img alt="Presupuesto con alerta configurado, o panel de crédito del Learner Lab" src="../img/actividad_1_1_paso5.png"></p>
+<p><strong>Comprueba</strong>: que sabes decir, sin dudar, dónde vas a mirar el gasto real cada vez que termines una sesión — eso es lo que vas a usar en el ritual de apagado del final de cada clase.</p>
+<p><strong>Captura</strong>: tu propio presupuesto con alerta configurado, o el panel de crédito del Learner Lab, según tu caso, <strong>con tu número de cuenta o el nombre de tu laboratorio visible en la misma pantalla</strong>. Anota también, en una frase, dónde exactamente vas a mirarlo — te sirve de recordatorio para el resto del curso.</p>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<p>Acabas de publicar un bucket accesible por cualquiera en internet. Si mañana a las tres de la madrugada ese bucket deja de responder, ¿de quién es la responsabilidad — de AWS o tuya? ¿Y si lo que falla es que alguien más ha podido borrar tus ficheros porque la política de acceso era más permisiva de lo necesario? Responde señalando, para cada caso, qué parte exacta de lo que has hecho hoy correspondería a cada lado del reparto.</p>
+</div>
+<hr>
+<h2 id="parte-b-pon-a-prueba-tu-despliegue-reto">Parte B — Pon a prueba tu despliegue (reto)<a class="headerlink" href="#parte-b-pon-a-prueba-tu-despliegue-reto" title="Permanent link">¶</a></h2>
+<p>Ya has hecho el despliegue una vez, a mano, combinando consola y CLI. Hoy el reto no es automatizarlo — es ponerlo a prueba y entenderlo mejor de lo que lo entendías al terminar la Parte A.</p>
+<p><strong>Rompe tu propio despliegue, y repáralo</strong>: vuelve a activar el bloqueo de acceso público completo sobre tu bucket (el mismo interruptor que desactivaste en el Paso 3), sin tocar nada más, y comprueba qué le pasa a tu URL pública. Anota el error exacto que ves — código y mensaje, no solo "no funciona". Después, sin borrar la política de bucket que ya tenías, desactiva de nuevo el bloqueo, y confirma que el sitio vuelve a responder exactamente igual que antes.</p>
+<p><strong>Calcula cuánto cuesta mantenerlo un año entero</strong>: con la <a href="https://calculator.aws">calculadora de precios oficial de AWS</a>, estima el coste mensual y anual de mantener este bucket funcionando permanentemente — el almacenamiento de los cuatro ficheros y la transferencia de salida estimada para un tráfico moderado (por ejemplo, 1000 visitas al mes). No hace falta tener nada desplegado para usar la calculadora: introduces los números y ella calcula.</p>
+<p>Antes de probarlo, predice: si un compañero de otro equipo intentase crear un bucket con exactamente el mismo nombre que el tuyo, ¿qué crees que pasaría? Escribe tu predicción y compruébala tú mismo, intentando crear un bucket con un nombre que ya uses tú.</p>
+<p>Después, aplica el mismo criterio a seis incidentes nuevos — distintos a los que aparecen en los apuntes de hoy, para que no puedas copiar una respuesta ya resuelta — y repártelos, uno a uno, entre "responsabilidad de AWS" y "responsabilidad tuya", <strong>justificando cada reparto en una frase</strong> — no basta con la etiqueta, tiene que quedar claro el porqué:</p>
+<ol>
+<li>Un grupo de seguridad (firewall de la instancia) se configura bloqueando por error el puerto que necesita el front, y la web deja de cargar.</li>
+<li>Una zona de disponibilidad entera deja de responder por un fallo de red interno del proveedor.</li>
+<li>Un bucket de backups queda borrado sin remedio porque nunca se activó el versionado.</li>
+<li>Una vulnerabilidad sin parchear en el hipervisor afecta a varios clientes que comparten el mismo host físico.</li>
+<li>Una clave de acceso sigue activa meses después de que la persona que la usaba dejara el equipo, y alguien ajeno la utiliza para entrar.</li>
+<li>Un servicio deja de responder durante un pico de tráfico porque nadie configuró el escalado automático, y la aplicación se cae por sobrecarga.</li>
+</ol>
+<p><strong>Comprueba</strong>: que el bucket roto muestra un error real (no una suposición) y que, tras repararlo, vuelve a responder exactamente igual que antes; que tu estimación de coste está desglosada por partida (almacenamiento y transferencia por separado), no es un número suelto.</p>
+<p><strong>Captura</strong>: el error exacto del bucket bloqueado, y la confirmación de que vuelve a funcionar tras repararlo; el desglose de coste mensual y anual de la calculadora; tu predicción sobre el nombre de bucket duplicado y lo que ha ocurrido de verdad; la tabla de los seis incidentes con su reparto y justificación.</p>
+<hr>
+<h2 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">¶</a></h2>
+<p><strong>Parte A — hasta 7 puntos</strong></p>
+<table>
+<thead>
+<tr>
+<th>Apartado</th>
+<th>Puntos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recorrido por consola y CLI documentado (mismas operaciones, ambos caminos)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Front de El Manillar publicado y accesible desde internet</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Control del gasto del laboratorio identificado y documentado</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Reflexión sobre responsabilidad compartida razonada</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parte B — reto, hasta 3 puntos adicionales (máximo total: 10)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Apartado</th>
+<th>Puntos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bucket roto y reparado, documentado con el error real y la confirmación de que vuelve a funcionar</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Estimación de coste mensual y anual desglosada por partida</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Predicción sobre el bucket duplicado y reparto de los seis incidentes justificado</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="cierre">✅ Cierre<a class="headerlink" href="#cierre" title="Permanent link">¶</a></h2>
+<p>Ya tienes algo tuyo publicado en internet, con una dirección propia, y sabes distinguir qué parte de lo que acabas de montar depende de AWS y qué parte depende de ti. La próxima sesión cambias de escenario y empiezas a diseñar redes virtuales desde cero.</p>
+<div class="admonition tip">
+<p class="admonition-title">Antes de salir: valora si sigues necesitando el bucket</p>
+<p>Nada del resto del módulo depende de que <code>el-manillar-front-&lt;tu-identificador&gt;</code> siga existiendo. Su coste es prácticamente nulo (cuatro ficheros diminutos), así que no es urgente, pero es buena costumbre no dejar recursos públicos abiertos sin necesidad — si quieres borrarlo, primero tienes que vaciarlo de objetos (S3 no deja borrar un bucket con contenido dentro).</p>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../primer-contacto-aws/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Primer contacto profesional con AWS">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Primer contacto profesional con AWS
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../tema2/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Tema 2 - Introducción">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Tema 2 - Introducción
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+<p style="margin: 0 auto; text-align: center; font-size: 0.7rem;">
+  © 2026 Alejandro Roig, Aitor Ventura y Ángel Vidal —
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">
+    Licencia CC BY-NC-SA 4.0
+  </a>
+</p>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
